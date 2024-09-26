@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\cartController;
 use App\Http\Controllers\userController;
+use App\Models\carts;
 use App\Models\fruits;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,5 +33,11 @@ Route::get('/logout',function(){
     Auth::logout();
     return redirect('/login');
 })->name('logout');
+
+Route::post('/details/{id}',[cartController::class,'addToCart'])->name('addToCart');
+
+Route::get('/cart',[cartController::class,'showCart'])->name('showCart');
+
+Route::put('/checkout',[cartController::class,'checkout'])->name('checkout');
 
 

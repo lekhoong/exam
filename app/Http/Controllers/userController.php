@@ -30,7 +30,7 @@ class userController extends Controller
 
         $user=User::create($formFields);
 
-        if(Auth::check($user)){
+        if($user){
             return redirect('/login');
         }else{
             return response('error');
